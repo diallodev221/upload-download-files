@@ -27,7 +27,3 @@ Before you start, you should have the following installed on your computer:
 To upload a file, click the "Choose File" button and select a file from your computer. Once you have selected a file, click the "Upload" button to upload the file to the server.
 
 To download a file, click the "Download" button next to the file you wish to download. The file will be downloaded to your computer.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

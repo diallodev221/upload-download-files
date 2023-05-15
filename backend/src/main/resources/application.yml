@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: upload-download-files
+
+  servlet:
+    multipart:
+      max-file-size: 10000000MB
+      max-request-size: 10000000MB

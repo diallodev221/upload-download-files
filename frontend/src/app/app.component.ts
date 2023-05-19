@@ -9,10 +9,17 @@ import { FileStatus } from './model/filestatus';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   filenames: String[] = [];
   fileStatus!: FileStatus;
 
   constructor(private fileService: FileService) { }
+  
+  onUpload(files:Event) {
+    
+    console.log(files);
+    
+  }
   
   // upload files
   onUploadFiles(files: File[]): void {
@@ -46,6 +53,7 @@ export class AppComponent {
         break
       case HttpEventType.Response:
         if (event.body instanceof Array) {
+          this.fileStatus.status = 'done';
           for (const filename of event.body) {
             this.filenames.unshift(filename)
           }
@@ -56,6 +64,7 @@ export class AppComponent {
           // saveAs(new File(event.body), event.headers.get('file-name'), type: `${event.headers.get('content-Type')};charSet=utf-8`)
 
         }
+        this.fileStatus.status = 'done';
         break;
       default:
         console.log(event);

@@ -9,18 +9,16 @@ Before you start, you should have the following installed on your computer:
 - Java JDK 8 or higher
 - Node.js and npm
 - Angular CLI
-- MySQL or another relational database
 
 ## Getting started
 
 1. Clone the repository to your local machine
-2. Create a MySQL database 
-3. Open `src/main/resources/application.yml` and configure the database connection settings
-4. Build and run the Spring Boot application using your favorite IDE or by running the command `mvn spring-boot:run` from the terminal or your run otpion in your IDE
-5. Open a new terminal window and navigate to the `client` directory
-6. Run the command `npm install` to install the required dependencies
-7. Run the command `ng serve` to start the Angular development server
-8. Open a web browser and navigate to `http://localhost:4200` to access the application
+2. Create a folder and give it name (uploads)
+3. Build and run the Spring Boot application using your favorite IDE or by running the command `mvn spring-boot:run` from the terminal or your run otpion in your IDE
+4. Open a new terminal window and navigate to the `client` directory
+5. Run the command `npm install` to install the required dependencies
+6. Run the command `ng serve` to start the Angular development server
+7. Open a web browser and navigate to `http://localhost:4200` to access the application
 
 ## Usage
 

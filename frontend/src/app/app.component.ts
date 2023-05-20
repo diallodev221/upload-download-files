@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FileService } from './services/file.service';
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 
-import { FileStatus } from './model/filestatus';
 import { saveAs } from 'file-saver';
 
 @Component({

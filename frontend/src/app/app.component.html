@@ -1,14 +1,14 @@
 <div class="container" style="margin-top: 20px;">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Upload and Download Files</h4>
+  <div class="card ">
+    <div class="card-heading d-flex justify-content-center align-item-center">
+      <h4 class="mt-4">Upload and Download Files</h4>
     </div>
-    <div class="panel-body">
+    <div class="card-body text-center">
       <p class="bold">Select files from your computer</p>
       <div *ngIf="fileStatus.status === 'progress'">
       <div class="progress">
         <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuemax="100">
-          {{ fileStatus.requestType }} {{ fileStatus.percent }}
+          {{ fileStatus.requestType }} {{ fileStatus.percent }} %
         </div>
       </div>
     </div>
@@ -28,10 +28,11 @@
     <br>
 
     <div *ngIf="filenames.length > 0" class="js-upload-finished">
-      <h3>Processed files</h3>
+      <h4 class="mr-3">Processed files</h4>
       <div *ngFor="let filename of filenames" class="list-group">
-        <a (click)="onDownloadFiles(filename)" class="list-group-item listgroupitem-success" style="cursor: pointer;">
-          <a class="alert-success float-right">Download</a>
+        <a (click)="onDownloadFiles(filename)" class="list-group-item listgroup-item-success" style="cursor: pointer;">
+          {{ filename }}
+          <a class="btn btn-outline-success btn-sm" style="float: right">Download</a>
         </a>
       </div>
     </div>

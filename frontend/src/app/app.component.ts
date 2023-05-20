@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FileService } from './services/file.service';
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
+
 import { FileStatus } from './model/filestatus';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +13,9 @@ import { FileStatus } from './model/filestatus';
 export class AppComponent {
 
   filenames: String[] = [];
-  fileStatus!: FileStatus;
+  fileStatus = {status: '', requestType: '', percent: 0};
 
   constructor(private fileService: FileService) { }
-  
-  onUpload(files:Event) {
-    
-    console.log(files);
-    
-  }
   
   // upload files
   onUploadFiles(files: File[]): void {
@@ -46,25 +42,26 @@ export class AppComponent {
   private reportProgress(event: HttpEvent<String[] | Blob>): void {
     switch (event.type) {
       case HttpEventType.UploadProgress:
-        this.updateStatus(event.loaded, event.total!, 'Uploading');
+        this.updateStatus(event.loaded, event.total!, 'Uploading... ');
         break
         case HttpEventType.DownloadProgress:
-          this.updateStatus(event.loaded, event.total!, 'Downloading');
+          this.updateStatus(event.loaded, event.total!, 'Downloading... ');
         break
       case HttpEventType.Response:
+        this.fileStatus.status = 'done';
         if (event.body instanceof Array) {
-          this.fileStatus.status = 'done';
+          
           for (const filename of event.body) {
             this.filenames.unshift(filename)
           }
+          
         } else {
           // download logic
-          // add filesaver library
-          
+          // saveAs(new File(event.body), event.headers.get('file-name'))
+          // saveAs('new File([])', event.headers.get('ile-Name'), { type: `${event.headers.get('content-Type')};charSet=utf-8`})
           // saveAs(new File(event.body), event.headers.get('file-name'), type: `${event.headers.get('content-Type')};charSet=utf-8`)
-
+          this.fileStatus.status = 'done';
         }
-        this.fileStatus.status = 'done';
         break;
       default:
         console.log(event);
